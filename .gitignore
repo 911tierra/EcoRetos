@@ -1,0 +1,54 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# Node/NPM
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build Files
+dist/
+build/
+*.min.css
+*.min.js
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.settings/
+*.iml
+.classpath
+.project
+
+# Backup Files
+*.bak
+*.tmp
+*.log
+
+# Dependencies
+bower_components/
+
+# Compiled Files
+*.class
+*.o
+*.pyc
+__pycache__/
+
+# Coverage
+coverage/
+.nyc_output/
