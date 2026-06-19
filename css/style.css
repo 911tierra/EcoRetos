@@ -1254,8 +1254,8 @@ body {
 }
 
 .short-container {
-  width: 360px;
-  height: 640px;
+  width: 450px;
+  height: 800px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 15px;
@@ -1265,5 +1265,5 @@ body {
 .short-container iframe {
   width: 100%;
   height: 100%;
-  border: none;
+  border: 0;
 }
