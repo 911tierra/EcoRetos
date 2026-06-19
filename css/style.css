@@ -54,13 +54,21 @@ body {
 }
 
 .navbar-logo a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .logo-icon {
