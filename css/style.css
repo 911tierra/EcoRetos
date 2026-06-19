@@ -209,10 +209,9 @@ body {
   gap: 1rem;
 }
 
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hero-image img {
+    width: 220px;
+    max-width: 100%;
 }
 
 .hero-placeholder {
