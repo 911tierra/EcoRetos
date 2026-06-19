@@ -1242,7 +1242,7 @@ body {
   }
 }
 
-/* ==================== VIDEO SECTION ==================== */
+/* ==================== YOUTUBE SHORT ==================== */
 
 .video-section {
   padding: 3rem 0;
@@ -1251,20 +1251,20 @@ body {
 
 .video-section h2 {
   margin-bottom: 2rem;
-  color: var(--dark-bg);
 }
 
-.video-container {
-  max-width: 400px;
+.short-container {
+  width: 100%;
+  max-width: 360px;
+  height: 640px;
   margin: 0 auto;
-  aspect-ratio: 9 / 16;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: var(--shadow-lg);
 }
 
-.video-container iframe {
+.short-container iframe {
   width: 100%;
   height: 100%;
-  border: none;
+  border: 0;
 }
