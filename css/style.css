@@ -1241,3 +1241,30 @@ body {
     font-size: 1.8rem;
   }
 }
+
+/* ==================== VIDEO SECTION ==================== */
+
+.video-section {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.video-section h2 {
+  margin-bottom: 2rem;
+  color: var(--dark-bg);
+}
+
+.video-container {
+  max-width: 400px;
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
