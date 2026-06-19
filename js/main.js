@@ -1,265 +1,325 @@
-// ===== Mobile Menu Toggle =====
+// ==================== MOBILE MENU ==================== 
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navbarMenu = document.getElementById('navbarMenu');
-    
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
-            navbarMenu.classList.toggle('active');
-        });
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navbarMenu = document.getElementById('navbarMenu');
+
+  if (mobileMenuToggle && navbarMenu) {
+    mobileMenuToggle.addEventListener('click', function() {
+      navbarMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const menuLinks = navbarMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navbarMenu.classList.remove('active');
+      });
+    });
+  }
+
+  // Set active link based on current page
+  const currentLocation = location.pathname;
+  const menuItems = document.querySelectorAll('.navbar-menu a');
+  menuItems.forEach(link => {
+    if (link.pathname === currentLocation) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
     }
+  });
+});
 
-    // Close mobile menu when a link is clicked
-    const navLinks = document.querySelectorAll('.navbar-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navbarMenu.classList.remove('active');
+// ==================== RESOURCE FILTER ==================== 
+function setupResourceFilter() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const resourceCards = document.querySelectorAll('.resource-card');
+
+  if (filterButtons.length > 0 && resourceCards.length > 0) {
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+
+        const filter = this.getAttribute('data-filter');
+
+        // Show/hide cards based on filter
+        resourceCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.classList.add('active');
+            }, 10);
+          } else {
+            card.classList.remove('active');
+            card.style.display = 'none';
+          }
         });
+      });
     });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.navbar-container')) {
-            navbarMenu.classList.remove('active');
-        }
-    });
-});
-
-// ===== Set Active Navigation Link =====
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.navbar-menu a');
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-});
-
-// ===== Smooth Scroll for Anchor Links =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// ===== Scroll Animation for Elements =====
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const elementsToAnimate = document.querySelectorAll('.stat-card, .card, .challenge-card-featured');
-    elementsToAnimate.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        observer.observe(element);
-    });
-});
-
-// ===== Form Validation (for contact/repository forms) =====
-function validateForm(formId) {
-    const form = document.getElementById(formId);
-    if (!form) return true;
-
-    const inputs = form.querySelectorAll('input[required], textarea[required]');
-    let isValid = true;
-
-    inputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.style.borderColor = '#e74c3c';
-            isValid = false;
-        } else {
-            input.style.borderColor = '';
-        }
-    });
-
-    // Email validation
-    const emailInputs = form.querySelectorAll('input[type="email"]');
-    emailInputs.forEach(input => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(input.value)) {
-            input.style.borderColor = '#e74c3c';
-            isValid = false;
-        } else {
-            input.style.borderColor = '';
-        }
-    });
-
-    return isValid;
+  }
 }
 
-// ===== Form Submission Handler =====
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formId = form.id;
-            if (validateForm(formId)) {
-                // Show success message
-                showNotification('¡Gracias por tu participación! 🌱', 'success');
-                form.reset();
-            } else {
-                showNotification('Por favor, completa todos los campos correctamente.', 'error');
-            }
-        });
-    });
-});
+// ==================== CONTACT FORM ==================== 
+function setupContactForm() {
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
 
-// ===== Notification System =====
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 25px;
-        border-radius: 5px;
-        background-color: ${type === 'success' ? '#2ecc71' : type === 'error' ? '#e74c3c' : '#3498db'};
-        color: white;
-        font-weight: 500;
-        z-index: 9999;
-        animation: slideIn 0.3s ease-out;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    `;
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    document.body.appendChild(notification);
+    const formData = new FormData(this);
+    const name = formData.get('contactName');
+    const email = formData.get('contactEmail');
+    const subject = formData.get('contactSubject');
+    const message = formData.get('contactMessage');
 
+    // Validation
+    if (!name || !email || !subject || !message) {
+      showError('contactError', 'Por favor completa todos los campos requeridos.');
+      return;
+    }
+
+    // Simulate form submission
+    // In a real application, this would send data to a backend
+    console.log('Form submitted:', { name, email, subject, message });
+
+    // Show success message
+    const successMsg = document.getElementById('contactSuccess');
+    const errorMsg = document.getElementById('contactError');
+    if (successMsg) successMsg.classList.remove('hidden');
+    if (errorMsg) errorMsg.classList.add('hidden');
+
+    // Reset form
+    this.reset();
+
+    // Hide success message after 5 seconds
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease-out';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+      if (successMsg) successMsg.classList.add('hidden');
+    }, 5000);
+  });
 }
 
-// ===== Counter Animation (for statistics) =====
-function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 16);
-    
+function showError(elementId, message) {
+  const errorMsg = document.getElementById(elementId);
+  if (errorMsg) {
+    const errorText = errorMsg.querySelector('p');
+    if (errorText) {
+      errorText.textContent = message;
+    }
+    errorMsg.classList.remove('hidden');
+  }
+}
+
+// ==================== PARTICIPATION FORM ==================== 
+function setupParticipationForm() {
+  const participationForm = document.getElementById('participationForm');
+  if (!participationForm) return;
+
+  participationForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const name = formData.get('partName');
+    const email = formData.get('partEmail');
+    const challenge = formData.get('partChallenge');
+
+    // Validation
+    if (!name || !email || !challenge) {
+      showError('formError', 'Por favor completa todos los campos requeridos.');
+      return;
+    }
+
+    // Simulate form submission to Google Forms
+    console.log('Participation registered:', { name, email, challenge });
+
+    // Show success message
+    const successMsg = document.getElementById('formSuccess');
+    const errorMsg = document.getElementById('formError');
+    if (successMsg) successMsg.classList.remove('hidden');
+    if (errorMsg) errorMsg.classList.add('hidden');
+
+    // Reset form
+    this.reset();
+
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      if (successMsg) successMsg.classList.add('hidden');
+    }, 5000);
+  });
+}
+
+// ==================== UPLOAD FORM ==================== 
+function setupUploadForm() {
+  const uploadForm = document.getElementById('uploadForm');
+  if (!uploadForm) return;
+
+  // Setup file upload drag and drop
+  const fileUploadArea = document.querySelector('.file-upload-area');
+  const fileInput = document.getElementById('uploadFiles');
+
+  if (fileUploadArea && fileInput) {
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      fileUploadArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      fileUploadArea.addEventListener(eventName, () => {
+        fileUploadArea.style.borderColor = '#2ecc71';
+        fileUploadArea.style.background = 'rgba(46, 204, 113, 0.1)';
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      fileUploadArea.addEventListener(eventName, () => {
+        fileUploadArea.style.borderColor = '#ecf0f1';
+        fileUploadArea.style.background = '#f8f9fa';
+      });
+    });
+
+    fileUploadArea.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      fileInput.files = files;
+      updateFileList();
+    });
+
+    fileUploadArea.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', updateFileList);
+  }
+
+  uploadForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const name = formData.get('uploadName');
+    const email = formData.get('uploadEmail');
+    const challenge = formData.get('uploadChallenge');
+    const description = formData.get('uploadDescription');
+    const files = fileInput.files;
+
+    // Validation
+    if (!name || !email || !challenge || !description || files.length === 0) {
+      showError('uploadError', 'Por favor completa todos los campos y carga al menos un archivo.');
+      return;
+    }
+
+    // Validate file sizes
+    let totalSize = 0;
+    for (let file of files) {
+      totalSize += file.size;
+      if (file.size > 50 * 1024 * 1024) { // 50MB
+        showError('uploadError', 'Algunos archivos superan el límite de 50MB.');
+        return;
+      }
+    }
+
+    // Simulate upload to Google Drive
+    console.log('Upload submitted:', {
+      name,
+      email,
+      challenge,
+      description,
+      files: Array.from(files).map(f => f.name)
+    });
+
+    // Show success message
+    const successMsg = document.getElementById('uploadSuccess');
+    const errorMsg = document.getElementById('uploadError');
+    if (successMsg) successMsg.classList.remove('hidden');
+    if (errorMsg) errorMsg.classList.add('hidden');
+
+    // Reset form
+    this.reset();
+    document.getElementById('fileList').innerHTML = '';
+
+    // Hide success message after 5 seconds
+    setTimeout(() => {
+      if (successMsg) successMsg.classList.add('hidden');
+    }, 5000);
+  });
+}
+
+function updateFileList() {
+  const fileInput = document.getElementById('uploadFiles');
+  const fileList = document.getElementById('fileList');
+  if (!fileList) return;
+
+  fileList.innerHTML = '';
+  const files = fileInput.files;
+
+  if (files.length > 0) {
+    const ul = document.createElement('ul');
+    ul.style.listStyle = 'none';
+    ul.style.padding = '0';
+
+    for (let file of files) {
+      const li = document.createElement('li');
+      li.className = 'file-item';
+      const size = (file.size / 1024 / 1024).toFixed(2);
+      li.innerHTML = `
+        <span>📄 ${file.name} (${size}MB)</span>
+        <button type="button" onclick="this.parentElement.remove()" style="background: none; border: none; cursor: pointer; color: #e74c3c; font-weight: bold;">✕</button>
+      `;
+      ul.appendChild(li);
+    }
+    fileList.appendChild(ul);
+  }
+}
+
+// ==================== ANIMATE STATS ==================== 
+function animateStats() {
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  statNumbers.forEach(stat => {
+    const target = parseInt(stat.getAttribute('data-target'));
+    const current = parseInt(stat.textContent) || 0;
+    const increment = target / 30; // Animate over 30 frames
+    let count = current;
+
     const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target.toLocaleString();
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current).toLocaleString();
-        }
-    }, 16);
+      count += increment;
+      if (count >= target) {
+        stat.textContent = target;
+        clearInterval(timer);
+      } else {
+        stat.textContent = Math.floor(count);
+      }
+    }, 30);
+  });
 }
 
+// ==================== INITIALIZE ON LOAD ==================== 
 document.addEventListener('DOMContentLoaded', function() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let hasAnimated = false;
+  setupResourceFilter();
+  setupContactForm();
+  setupParticipationForm();
+  setupUploadForm();
+  animateStats();
 
-    const counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !hasAnimated) {
-                hasAnimated = true;
-                statNumbers.forEach(el => {
-                    const target = parseInt(el.textContent.replace(/\D/g, ''));
-                    if (!isNaN(target)) {
-                        animateCounter(el, target);
-                    }
-                });
-            }
-        });
-    }, { threshold: 0.5 });
-
-    if (statNumbers.length > 0) {
-        counterObserver.observe(statNumbers[0].closest('.statistics'));
-    }
-});
-
-// ===== Add Animations to CSS =====
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
+  // Scroll to section
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && href.length > 1) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// ===== Lazy Loading for Images =====
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                }
-                observer.unobserve(img);
-            }
-        });
+      }
     });
-
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// ===== Accessibility: Focus Trap in Navigation =====
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        const navbarMenu = document.getElementById('navbarMenu');
-        if (navbarMenu && navbarMenu.classList.contains('active')) {
-            navbarMenu.classList.remove('active');
-            document.getElementById('mobileMenuToggle').focus();
-        }
-    }
+  });
 });
-
-// ===== Console Welcome Message =====
-console.log('%c🌱 ¡Bienvenido a EcoRetos! 🌍', 'font-size: 20px; color: #2ecc71; font-weight: bold;');
-console.log('%cSé parte del cambio ambiental. Juntos podemos hacer una diferencia.', 'font-size: 14px; color: #27ae60;');
