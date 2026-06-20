@@ -1462,3 +1462,25 @@ body {
     height: 90px;
     object-fit: contain;
 }
+
+.google-form-container {
+
+    background: white;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+    margin-top: 2rem;
+
+}
+
+.google-form-container iframe {
+
+    width: 100%;
+
+    border: none;
+
+}
