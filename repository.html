@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Participar en EcoRetos - Registra y carga tu evidencia">
-    <title>911 Tierra - Participar en EcoRetos</title>
+    <link rel="icon" href="img/favicon.png">
+<title>Participa | 911 Tierra</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-logo">
-                <a href="index.html">
-                    <span class="logo-icon">🌱</span>
-                    <span class="logo-text">911 Tierra</span>
-                </a>
-            </div>
+           <div class="navbar-logo">
+    <a href="index.html" class="logo-link">
+        <img src="img/favicon.png" alt="911 Tierra" class="logo-img">
+        <span class="logo-text">911 Tierra</span>
+    </a>
+</div>
             <div class="menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
@@ -36,279 +37,49 @@
     <section class="page-header">
         <div class="container">
             <h1>Participá en EcoRetos</h1>
-            <p>Registrate, documentá tu progreso y cargá tu evidencia</p>
+     <p>Únete al EcoReto del mes y comparte tu participación</p>
         </div>
     </section>
 
     <!-- Participation Modes -->
     <section class="section">
-        <div class="container">
-            <h2>Dos Modalidades de Participación</h2>
-            <div class="modes-grid">
-                <!-- Mode 1: Voting/Registration -->
-                <div class="mode-card">
-                    <div class="mode-icon">🗳️</div>
-                    <h3>Votación y Registro</h3>
-                    <p>Completá el formulario para registrarte en el reto de tu elección. Tu voto también cuenta para seleccionar futuros retos.</p>
-                    <div class="mode-details">
-                        <ul>
-                            <li>✓ Registro rápido</li>
-                            <li>✓ Votá nuevos retos</li>
-                            <li>✓ Recibí recordatorios</li>
-                            <li>✓ Conectado con Google Forms</li>
-                        </ul>
-                    </div>
-                    <a href="#form-section" class="btn btn-primary">Registrarme Ahora</a>
-                </div>
+    <div class="container">
 
-                <!-- Mode 2: Evidence Upload -->
-                <div class="mode-card">
-                    <div class="mode-icon">📸</div>
-                    <h3>Cargá tu Evidencia</h3>
-                    <p>Sube videos e imágenes de tu proceso completando el reto. Conectado directamente a Google Drive.</p>
-                    <div class="mode-details">
-                        <ul>
-                            <li>✓ Carga de archivos fácil</li>
-                            <li>✓ Videos e imágenes</li>
-                            <li>✓ Almacenamiento en Drive</li>
-                            <li>✓ Sincronización automática</li>
-                        </ul>
-                    </div>
-                    <a href="#upload-section" class="btn btn-secondary">Cargar Evidencia</a>
-                </div>
-            </div>
+        <h2>Participa en el EcoReto</h2>
+
+        <p class="section-description">
+            Completa el formulario para registrarte, compartir tu experiencia
+            y enviar evidencia de tu participación en el reto
+            <strong>"Dúchate en lo que dura una canción"</strong>.
+        </p>
+
+        <div class="google-form-container">
+
+            <iframe
+                src="AQUI_VA_EL_LINK_DE_EMBED_DE_GOOGLE_FORMS"
+                width="100%"
+                height="1000"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0">
+                Cargando formulario...
+            </iframe>
+
         </div>
-    </section>
 
-    <!-- Registration Form Section -->
-    <section class="section section-alt" id="form-section">
-        <div class="container">
-            <h2>Formulario de Registro</h2>
-            <p class="section-description">Registrate en el EcoReto de tu elección. Este formulario está integrado con Google Forms para asegurar que tu voto sea contado.</p>
-            
-            <form id="participationForm" class="form-container">
-                <div class="form-group">
-                    <label for="partName">Nombre Completo *</label>
-                    <input type="text" id="partName" name="partName" required placeholder="Tu nombre">
-                </div>
-
-                <div class="form-group">
-                    <label for="partEmail">Correo Electrónico *</label>
-                    <input type="email" id="partEmail" name="partEmail" required placeholder="tu@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="partPhone">Teléfono (opcional)</label>
-                    <input type="tel" id="partPhone" name="partPhone" placeholder="+1 (555) 123-4567">
-                </div>
-
-                <div class="form-group">
-                    <label for="partChallenge">Elegí tu EcoReto *</label>
-                    <select id="partChallenge" name="partChallenge" required>
-                        <option value="">-- Selecciona un reto --</option>
-                        <option value="plastic">♻️ Reducir Plásticos de Un Solo Uso</option>
-                        <option value="water">💧 Ahorrador de Agua 30 Días</option>
-                        <option value="energy">⚡ Desafío de Energía Renovable</option>
-                        <option value="transport">🚴 Movilidad Sustentable 30 Días</option>
-                        <option value="food">🌱 Alimentación Consciente</option>
-                        <option value="consumption">🛍️ Compra Nada Nuevo 30 Días</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="partExperience">¿Cuál es tu nivel de experiencia ambiental?</label>
-                    <select id="partExperience" name="partExperience" required>
-                        <option value="">-- Selecciona --</option>
-                        <option value="beginner">Soy principiante en estos temas</option>
-                        <option value="intermediate">Tengo experiencia media</option>
-                        <option value="advanced">Ya realizo muchas acciones sostenibles</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>¿Qué retos te gustaría ver en el futuro?</label>
-                    <div class="checkbox-group">
-                        <div>
-                            <input type="checkbox" id="future1" name="futureRetos" value="Zero Waste">
-                            <label for="future1">Zero Waste</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="future2" name="futureRetos" value="Plantación de árboles">
-                            <label for="future2">Plantación de árboles</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="future3" name="futureRetos" value="Limpieza de playas">
-                            <label for="future3">Limpieza de playas/ríos</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="future4" name="futureRetos" value="Moda sostenible">
-                            <label for="future4">Moda sostenible</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="future5" name="futureRetos" value="Activismo digital">
-                            <label for="future5">Activismo digital</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="partConsent" name="partConsent" required>
-                    <label for="partConsent">Acepto recibir actualizaciones sobre EcoRetos y noticias de 911 Tierra *</label>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary btn-large">Registrarme en el Reto</button>
-                    <button type="reset" class="btn btn-secondary">Limpiar</button>
-                </div>
-
-                <!-- Success Message -->
-                <div id="formSuccess" class="message-box message-success hidden">
-                    <span class="message-icon">✓</span>
-                    <div class="message-content">
-                        <h4>¡Registración Exitosa!</h4>
-                        <p>Te has registrado exitosamente. Recibirás un email de confirmación. ¡Ahora a documentar tu transformación!</p>
-                    </div>
-                </div>
-
-                <!-- Error Message -->
-                <div id="formError" class="message-box message-error hidden">
-                    <span class="message-icon">⚠</span>
-                    <div class="message-content">
-                        <h4>Error en el registro</h4>
-                        <p id="formErrorText">Por favor, verifica tus datos e intenta nuevamente.</p>
-                    </div>
-                </div>
-            </form>
-
-            <div class="form-note">
-                <p>💡 <strong>Nota:</strong> Tu información será sincronizada con nuestro Google Form para asegurar que tu voto sea contabilizado en la selección de futuros retos.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Evidence Upload Section -->
-    <section class="section" id="upload-section">
-        <div class="container">
-            <h2>Cargar tu Evidencia</h2>
-            <p class="section-description">Documentá tu transformación. Subí videos e imágenes de tu progreso completando el EcoReto. Se guardarán automáticamente en nuestro repositorio de Google Drive.</p>
-            
-            <form id="uploadForm" class="form-container form-upload">
-                <div class="form-group">
-                    <label for="uploadName">Nombre (para identificar tu evidencia) *</label>
-                    <input type="text" id="uploadName" name="uploadName" required placeholder="Tu nombre o apodo">
-                </div>
-
-                <div class="form-group">
-                    <label for="uploadEmail">Email de Confirmación *</label>
-                    <input type="email" id="uploadEmail" name="uploadEmail" required placeholder="tu@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="uploadChallenge">¿Cuál es el reto que completaste? *</label>
-                    <select id="uploadChallenge" name="uploadChallenge" required>
-                        <option value="">-- Selecciona el reto --</option>
-                        <option value="plastic">♻️ Reducir Plásticos de Un Solo Uso</option>
-                        <option value="water">💧 Ahorrador de Agua 30 Días</option>
-                        <option value="energy">⚡ Desafío de Energía Renovable</option>
-                        <option value="transport">🚴 Movilidad Sustentable 30 Días</option>
-                        <option value="food">🌱 Alimentación Consciente</option>
-                        <option value="consumption">🛍️ Compra Nada Nuevo 30 Días</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="uploadDescription">Descripción de tu Reto (¿Qué hiciste? ¿Cuál fue tu impacto?) *</label>
-                    <textarea id="uploadDescription" name="uploadDescription" rows="5" required placeholder="Cuenta tu historia y el impacto que generaste..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="uploadFiles">Subí tus Videos/Imágenes *</label>
-                    <div class="file-upload-area">
-                        <input type="file" id="uploadFiles" name="uploadFiles" multiple accept="video/*,image/*" required>
-                        <div class="file-upload-hint">
-                            <p>📁 Arrastrá tus archivos aquí o hacé clic para seleccionar</p>
-                            <p class="file-types">Formatos: MP4, WebM, JPG, PNG (máx. 50MB por archivo)</p>
-                        </div>
-                    </div>
-                    <div id="fileList" class="file-list"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="uploadImpact">Estimado del Impacto (opcional)</label>
-                    <input type="text" id="uploadImpact" name="uploadImpact" placeholder="Ej: 3kg de plástico evitado, 100 litros de agua ahorrada">
-                </div>
-
-                <div class="form-group checkbox-group">
-                    <input type="checkbox" id="uploadShare" name="uploadShare" checked>
-                    <label for="uploadShare">Autorizo que mi evidencia se comparta en las redes de 911 Tierra</label>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary btn-large">Cargar Evidencia</button>
-                    <button type="reset" class="btn btn-secondary">Limpiar</button>
-                </div>
-
-                <!-- Success Message -->
-                <div id="uploadSuccess" class="message-box message-success hidden">
-                    <span class="message-icon">✓</span>
-                    <div class="message-content">
-                        <h4>¡Evidencia Cargada Exitosamente!</h4>
-                        <p>Tu evidencia ha sido guardada en nuestro repositorio. Recibirás un email de confirmación. ¡Gracias por tu compromiso con 911 Tierra!</p>
-                    </div>
-                </div>
-
-                <!-- Error Message -->
-                <div id="uploadError" class="message-box message-error hidden">
-                    <span class="message-icon">⚠</span>
-                    <div class="message-content">
-                        <h4>Error en la carga</h4>
-                        <p id="uploadErrorText">Por favor, intenta nuevamente. Si el problema persiste, contactanos a 911tierra@gmail.com</p>
-                    </div>
-                </div>
-            </form>
-
-            <div class="form-note">
-                <p>💡 <strong>Nota:</strong> Los archivos se sincronizarán automáticamente con nuestro Google Drive. Tu información será protegida según nuestra política de privacidad.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guidelines Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2>Pautas para Cargar tu Evidencia</h2>
-            <div class="guidelines-grid">
-                <div class="guideline-card">
-                    <div class="guideline-icon">📹</div>
-                    <h3>Calidad del Video</h3>
-                    <p>Los videos no necesitan ser perfectos. Lo importante es que muestren autenticidad y tu proceso real.</p>
-                </div>
-                <div class="guideline-card">
-                    <div class="guideline-icon">📸</div>
-                    <h3>Fotografías Claras</h3>
-                    <p>Subí fotos bien iluminadas que muestren claramente tu progreso y compromiso con el reto.</p>
-                </div>
-                <div class="guideline-card">
-                    <div class="guideline-icon">📝</div>
-                    <h3>Descripción Detallada</h3>
-                    <p>Cuenta tu historia. ¿Qué fue fácil? ¿Qué fue difícil? ¿Cuál fue tu impacto?</p>
-                </div>
-                <div class="guideline-card">
-                    <div class="guideline-icon">✅</div>
-                    <h3>Veracidad</h3>
-                    <p>La comunidad confía en tu honestidad. Muestra tu verdadero proceso, no poses.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-section">
-                <h4>911 Tierra</h4>
-                <p>Acciones pequeñas, impactos gigantes. Transformá el mundo desde tu día a día.</p>
-            </div>
+           <div class="footer-section">
+    <h4>
+        <img src="img/favicon.png" alt="911 Tierra" class="footer-logo">
+        911 Tierra
+    </h4>
+    <p>Acciones pequeñas, impactos gigantes. Transforma el mundo desde tu día a día.</p>
+</div>
             <div class="footer-section">
                 <h4>Síguenos en Redes</h4>
                 <div class="social-links">
@@ -316,6 +87,7 @@
                     <a href="https://www.instagram.com/tierra_911?igsh=MXZwaDY0b2NueWYwaA==" target="_blank" title="Instagram">📷 Instagram</a>
                     <a href="https://youtube.com/@911tierra2?si=7yGDqjPe3lNmE2c7" target="_blank" title="YouTube">🎥 YouTube</a>
                 </div>
+                <p><a href="privacy.html">Política de Privacidad</a></p>
             </div>
             <div class="footer-section">
                 <h4>Contacto</h4>
@@ -324,7 +96,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 911 Tierra. Hecho con 💚 por la sostenibilidad.</p>
+<p>&copy; 2026 911 Tierra. Hecho con 💚 por la sostenibilidad.</p>
         </div>
     </footer>
 
