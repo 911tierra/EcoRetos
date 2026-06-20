@@ -1267,3 +1267,9 @@ body {
   height: 100%;
   border: 0;
 }
+
+.about-logo img{
+    width:120px;
+    height:auto;
+    margin-bottom:1rem;
+}
