@@ -1443,10 +1443,10 @@ body {
 }
 
 .footer-logo {
-    width: 48px !important;
-    height: 48px !important;
-    max-width: 48px;
-    max-height: 48px;
+    width: 64px !important;
+    height: 64px !important;
+    max-width: 64px;
+    max-height: 64px;
     object-fit: contain;
     display: block;
 }
@@ -1454,7 +1454,7 @@ body {
 .footer-section h4 {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 .challenge-icon img {
