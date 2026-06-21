@@ -187,13 +187,13 @@ body {
 
 /* ==================== HERO SECTION ==================== */
 .hero {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: center;
-  align-items: center;
   gap: 4rem;
+  align-items: center;
   padding: 4rem 0;
   min-height: 500px;
-  flex-wrap: wrap;
 }
 
 .hero-content {
