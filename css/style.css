@@ -222,10 +222,10 @@ body {
 }
 
 .hero-image img {
-    width: 480px !important;
-    height: 480px !important;
-    max-width: 480px;
-    max-height: 480px;
+    width: 380px !important;
+    height: 380px !important;
+    max-width: 380px;
+    max-height: 380px;
     object-fit: contain;
     display: block;
 }
