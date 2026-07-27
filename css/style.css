@@ -1745,3 +1745,30 @@ body {
     text-align: center;
   }
 }
+
+/* ==================== HOY EN 911 TIERRA ==================== */
+
+.today-card{
+    padding:3rem 0;
+    background:#eefaf1;
+    text-align:center;
+}
+
+.today-card .container{
+    max-width:900px;
+}
+
+.today-card h2{
+    margin-bottom:1rem;
+    color:var(--primary-dark);
+}
+
+.today-card h3{
+    font-size:1.6rem;
+    margin-bottom:1rem;
+}
+
+.today-card p{
+    font-size:1.1rem;
+    margin:.7rem 0;
+}
