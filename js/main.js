@@ -323,3 +323,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+// DIARIO
+fetch("https://script.google.com/macros/s/AKfycbwrDJc0ttRu3kYIcyjSlNSSClBpboe13RV7-UMINXHZTAt83nrf-m1gyRL5yQw50ReD/exec")
+
+.then(r=>r.json())
+
+.then(data=>{
+
+    if(data.dia){
+
+        document.getElementById("dia").innerHTML=
+        "📅 "+data.dia;
+
+    }else{
+
+        document.getElementById("dia").innerHTML=
+        "🌱 EcoDato del día";
+
+    }
+
+    document.getElementById("dato").innerHTML=
+    "💡 "+data.dato;
+
+    document.getElementById("consejo").innerHTML=
+    "♻ "+data.consejo;
+
+});
