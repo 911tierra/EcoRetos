@@ -351,3 +351,56 @@ fetch("https://script.google.com/macros/s/AKfycbwrDJc0ttRu3kYIcyjSlNSSClBpboe13R
     "♻ "+data.consejo;
 
 });
+
+// ==================== DÍA AMBIENTAL ====================
+
+fetch("data/dias.csv")
+  .then(response => response.text())
+  .then(text => {
+
+    const filas = text.trim().split("\n").slice(1);
+
+    const hoy = new Date();
+
+    const fechaHoy =
+      String(hoy.getMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(hoy.getDate()).padStart(2, "0");
+
+    let encontrado = null;
+
+    filas.forEach(fila => {
+
+      const columnas = fila.split(",");
+
+      if (columnas[0] === fechaHoy) {
+        encontrado = columnas;
+      }
+
+    });
+
+    if (encontrado) {
+
+      document.getElementById("dia").textContent =
+        encontrado[1];
+
+      document.getElementById("dato").textContent =
+        "💡 " + encontrado[2];
+
+      document.getElementById("consejo").textContent =
+        "🌱 " + encontrado[3];
+
+    } else {
+
+      document.getElementById("dia").textContent =
+        "Hoy también puedes ayudar al planeta.";
+
+      document.getElementById("dato").textContent =
+        "Cada pequeño hábito sostenible suma al cambio.";
+
+      document.getElementById("consejo").textContent =
+        "Reduce, reutiliza y recicla siempre que puedas.";
+
+    }
+
+  });
