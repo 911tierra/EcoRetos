@@ -354,7 +354,7 @@ fetch("https://script.google.com/macros/s/AKfycbwrDJc0ttRu3kYIcyjSlNSSClBpboe13R
 
 // ==================== DÍA AMBIENTAL ====================
 
-fetch("data/dias.csv")
+fetch("https://script.google.com/macros/s/AKfycbwrDJc0ttRu3kYIcyjSlNSSClBpboe13RV7-UMINXHZTAt83nrf-m1gyRL5yQw50ReD/exec")
   .then(response => response.text())
   .then(text => {
 
